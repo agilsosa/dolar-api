@@ -1,0 +1,20 @@
+{
+  "name": "dolar-api",
+  "scripts": {
+    "dev": "bun run --hot --port 8080 src/index.ts",
+    "lint": "eslint --ext js,ts src",
+    "lint:fix": "eslint --ext js,ts src --fix",
+    "format": "prettier src --check",
+    "format:fix": "prettier src --write"
+  },
+  "dependencies": {
+    "hono": "^4.9.5",
+    "zod": "^4.1.5"
+  },
+  "devDependencies": {
+    "@hono/eslint-config": "^2.0.3",
+    "@types/bun": "latest",
+    "eslint": "^9.34.0",
+    "prettier": "^3.6.2"
+  }
+}
