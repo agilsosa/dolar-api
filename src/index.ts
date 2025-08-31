@@ -34,10 +34,11 @@ app.get("/dolar", async (c) => {
       },
       200
     );
-  } catch {
+  } catch (e) {
+    console.error(e);
     return c.json(
       {
-        message: "No se ha podido acceder al valor del dolar oficial",
+        message: e,
       },
       500
     );
