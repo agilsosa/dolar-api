@@ -44,10 +44,10 @@ app.get("/dolar", async (c) => {
   }
 });
 
-app.onError((_, c) => {
+app.onError((err, c) => {
   const statusCode: StatusCode = 500;
   const content: Record<string, unknown> = { message: "Internal server error" };
-
+  console.error(err);
   return c.json(content, statusCode);
 });
 
