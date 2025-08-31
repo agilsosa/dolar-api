@@ -4,8 +4,6 @@ import { responseMiddleware } from "./middleware/response";
 
 const app = new Hono().basePath("/api");
 
-app.use(responseMiddleware);
-
 app.get("/dolar", async (c) => {
   let dolarValue = "";
 
