@@ -49,7 +49,7 @@ app.onError((err, c) => {
   const statusCode: StatusCode = 500;
   const content: Record<string, unknown> = { message: "Internal server error" };
 
-  return c.json(err.message, statusCode);
+  return c.json({ message: err.message }, statusCode);
 });
 
 app.notFound((c) => {
