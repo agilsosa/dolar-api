@@ -4,6 +4,8 @@ import { responseMiddleware } from "./middleware/response";
 
 const app = new Hono().basePath("/api");
 
+app.use(responseMiddleware);
+
 app.get("/dolar", async (c) => {
   let dolarValue = "";
 
@@ -32,22 +34,21 @@ app.get("/dolar", async (c) => {
       },
       200
     );
-  } catch (e) {
-    console.error(e);
+  } catch {
     return c.json(
       {
-        message: e,
+        message: "No se ha podido acceder al valor del dolar oficial",
       },
       500
     );
   }
 });
 
-app.onError((err, c) => {
+app.onError((_, c) => {
   const statusCode: StatusCode = 500;
   const content: Record<string, unknown> = { message: "Internal server error" };
 
-  return c.json({ message: err.message }, statusCode);
+  return c.json(content, statusCode);
 });
 
 app.notFound((c) => {
